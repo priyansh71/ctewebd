@@ -60,7 +60,7 @@
 			const address = document.querySelector('#address').value;
 			try{
 				let res = await fetch(address+'/corscheck');
-				let output = res.text();
+				let output = await res.text();
 				document.querySelector('#o1').classList.remove('gray');
 				if(output === 'CORS Setup Done'){
 					document.querySelector('#o1').classList.add('green');
