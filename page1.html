@@ -57,6 +57,9 @@
 
 	<script type="text/javascript">
 		async function check() {
+			document.querySelector('#o1').classList.remove('red');
+			document.querySelector('#o1').classList.remove('green');
+			document.querySelector('#o1').classList.add('gray');
 			const address = document.querySelector('#address').value;
 			try{
 				let res = await fetch(address+'/corscheck');

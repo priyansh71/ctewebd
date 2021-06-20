@@ -77,7 +77,16 @@
 			}
 		}
 
+		function resetColors(){
+			for(let x = 0; x < methods.length; x++){
+				document.querySelector('#o'+x).classList.remove('red');
+				document.querySelector('#o'+x).classList.remove('green');
+				document.querySelector('#o'+x).classList.add('gray');
+			}
+		}
+
 		async function check(){
+			resetColors();
 			const address = document.querySelector('#address').value;
 			for(let x = 0; x < methods.length; x++){
 				try{
