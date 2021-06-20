@@ -33,6 +33,7 @@
 	<li>CORS is a security feature built into browsers to not allow access to resources on the internet from random locations.</li>
 	<li>As a measure of security, whenever a webpage makes a cross-origin request, the browser first sends a 'Pre-Flight request' asking the server if it is okay to make such a cross-origin request.</li>
 	<li>The server should then respond (to the pre-flight request) with the alloweds origins (for a potential request) and the allowed methods (for a potential request).</li>
+	<li>This is done by <a href="https://expressjs.com/en/5x/api.html#res.set">setting</a> the appropriate headers in the response. You will have to search up which headers to set, to make successful cross-origin requests.</li>
 	<li>If the browser receives a satisfactory response for the pre-flight request, only then it allows the webpage to go ahead with making the request.</li>
 	</ul>
 	<h2>Question:</h2>
