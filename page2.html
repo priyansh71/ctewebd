@@ -100,6 +100,7 @@
 					if(output === methods[x]){
 						document.querySelector('#o' + x).classList.add('green');
 					} else {
+						console.log('Text from response does not match requirements');
 						document.querySelector('#o' + x).classList.add('red');
 					}
 				}
