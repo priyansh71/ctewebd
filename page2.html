@@ -17,7 +17,7 @@
 			color:  gray;
 		}
 		.green{
-			color: green;
+			color: lightgreen;
 		}
 		.red{
 			color: red;
@@ -48,7 +48,7 @@
 		<span class='button' onclick='check()'>Submit</span>
 	</div>
 
-	<h2>Objectives Checklist:</h2>
+	<h2 id='tasklist'>Objectives Checklist:</h2>
 	<ul id='list'>
 	</ul>
 
@@ -87,6 +87,7 @@
 
 		async function check(){
 			resetColors();
+			document.querySelector('#tasklist').innerHTML = 'Objectives Checklist: Running';
 			const address = document.querySelector('#address').value;
 			for(let x = 0; x < methods.length; x++){
 				try{
@@ -109,6 +110,7 @@
 				}
 				
 			}
+			document.querySelector('#tasklist').innerHTML = 'Objectives Checklist: Finished running';
 		}
 	</script>
 

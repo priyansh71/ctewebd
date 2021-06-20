@@ -48,7 +48,7 @@
 	<div>
 		<span class='button' onclick='check()'>Submit</span>
 	</div>
-	<h2>Objectives Checklist:</h2>
+	<h2 id="tasklist">Objectives Checklist:</h2>
 	<ul>
 		<li class='gray' id='o1'>
 			GET Request on /corscheck returns string 'CORS Setup Done'.
@@ -57,6 +57,7 @@
 
 	<script type="text/javascript">
 		async function check() {
+			document.querySelector('#tasklist').innerHTML = 'Objectives Checklist: Running';
 			document.querySelector('#o1').classList.remove('red');
 			document.querySelector('#o1').classList.remove('green');
 			document.querySelector('#o1').classList.add('gray');
@@ -77,6 +78,7 @@
 				document.querySelector('#o1').classList.add('red');
 			}
 		}
+		document.querySelector('#tasklist').innerHTML = 'Objectives Checklist: Finished running';
 	</script>
 </body>
 </html>
