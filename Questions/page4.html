@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Question 4</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR"
+      rel="stylesheet"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../styles.css" />
+    <style type="text/css">
+      .code {
+        font-family: monospace;
+      }
+      .button {
+        background-color: black;
+        color: white;
+        padding: 3px;
+        cursor: pointer;
+      }
+      .gray {
+        color: gray;
+      }
+      .green {
+        color: green;
+      }
+      .red {
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+	<div class="bg-gray-100 p-1 shadow-lg pl-2">
+		<div
+		  class="text-gray-800 text-3xl font-extrabold py-5 px-6"
+		  style="font-family: 'Montserrat'"
+		>Request and Response Bodies</div>
+		</div>
+		<div class="bg-gray-800 text-gray-50 py-5 px-8">
+			<div
+			  class="list-disc mx-5 px-1 text-lg my-4 space-y-3 tracking-wide"
+			  style="font-family: 'Noto Sans KR'"
+			>
+      <li>
+        The main way to exchange data between client and server is through
+        request and response bodies.
+      </li>
+      <li>The data sent in the body can be of various types (or encodings).</li>
+      <li>
+        Type of data simply refers to the rules used to represent the data.
+      </li>
+      <li>
+        The type of data being sent is described using the
+        <span class="code">'Content-Type'</span> header, both by client and
+        server.
+      </li>
+      <li>
+        Common types of data used with requests/responses are
+        <span class="code">JSON, Plain Text, FormData and Blob</span>.
+      </li>
+      <li>
+        FormData usually consists of key-value pairs, where the keys are
+        strings, and the values can be numbers, strings, files, blobs, etc.
+      </li>
+      <li>
+        To process these types of data on the backend, you can generally use
+        various Middlewares available to use with ExpressJS.
+      </li>
+      <li>Examples include body-parser, multer, etc.</li>
+      <li>
+        You can also do body processing without using third party libraries, but
+        it involves some understanding of how data streams work. Data streams
+        are a powerful feature of NodeJS.
+      </li>
+    </div>
+		</div>
+		<h2 class="text-gray-800 bg-gray-100 text-xl px-7 font-mono pt-3">
+			Question:
+		  </h2>
+		  <div
+			class="
+			  pt-4
+			  text-md
+			  bg-gray-100
+			  font-semibold
+			  text-lg
+			  space-y-2.5
+			  py-3
+			  px-10
+			  text-gray-800
+			"
+			style="font-family: 'Noto Sans Kr'"
+		  >
+      Write code for a backend server which can read body from POST requests,
+      and respond with a body of data.
+    </h4>
+    <h4>
+      All requests in this question will be POST requests. All requests will be
+      done on the same path, which is <span class="code">'/bodybuilder'</span>.
+    </h4>
+    <h4>
+      If the request contains JSON data, then the server should respond with
+      Plain Text data.
+    </h4>
+    <h4>
+      If the request contains Plain Text data, then the server should respond
+      with JSON data.
+    </h4>
+    <h4>
+      If the request contains FormData, then the server should respond with JSON
+      data as well.
+    </h4>
+    <h4>Examples:</h4>
+    <h4>
+      Request with JSON data will be of the format
+      <span class="code">{'data':'Some string here'}</span>. Then the server
+      should respond with Plain Text data
+      <span class="code">'Some string here'</span>.
+    </h4>
+    <h4>
+      Request with Plain text data will be of the format
+      <span class="code">'Some string here'</span>, then the server should
+      respond with JSON data of the format
+      <span class="code">{'data':'Some string here'}</span>.
+    </h4>
+    <h4>
+      Request will FormData will be of the format
+      <span class="code">key: data; value: 'Some string here'</span>, then the
+      server should respond with JSON data of the format
+      <span class="code">{'data':'Some string here'}</span>.
+    </h4>
+	<div class="mb-4">
+        <form>
+      Server address : 
+      <input type="text" name="" id="address" class="
+	  rounded-sm
+	  border-2 border-gray-800
+	  mr-4
+	  mb-3
+	  font-normal
+	  text-md
+    px-2
+	  py-0.75
+	  focus:border-gray-800
+	" />
+	<br >
+	<span
+            class="
+              bg-gray-800
+              cursor-pointer
+              text-gray-50
+              px-3
+              py-1.5
+              text-md
+              rounded-md
+            "
+            onclick="check()"
+            >Submit</span
+          >
+    </form>
+
+    
+    </div>
+    <h2 id="tasklist">Objectives Checklist : </h2>
+    <div class="mb-5 mt-3 list-disc" >
+      <li class="gray" id="o1">JSON request, Plain text response</li>
+      <li class="gray" id="o2">Plain text request, JSON response</li>
+      <li class="gray" id="o3">FormData request, JSON response</li>
+    </div>
+    <div class="relative">
+      <a href="../index.html">
+    <span class="bg-gray-800 text-gray-50 px-3.5 py-2 rounded-md absolute right-1 bottom-2">Homepage</span>
+    </a>
+    </div>
+		  </div>
+
+    <script type="text/javascript">
+      async function check() {
+        resetColors();
+        document.querySelector("#tasklist").innerHTML =
+          "Objectives Checklist: Running";
+        const address = document.querySelector("#address").value;
+        const strings = [
+          "Who ate the last sandwich?",
+          "I will be going to France next week.",
+          "The window was behind a large brown sofa.",
+          "Walking in the rain can be difficult.",
+          "The company decided to reduce hours for everyone.",
+        ];
+        let randomString = strings[Math.floor(Math.random() * strings.length)];
+
+        try {
+          let res = await fetch(address + "/bodybuilder", {
+            method: "POST",
+            body: JSON.stringify({ data: randomString }),
+            headers: {
+              "content-type": "application/json",
+            },
+          });
+          let output = await res.text();
+          if (output === randomString) {
+            right("o1");
+          } else {
+            wrong("o1");
+            console.log("Response text did not match, for first objective.");
+          }
+        } catch (err) {
+          console.log(err);
+          wrong("o1");
+        }
+
+        try {
+          let res = await fetch(address + "/bodybuilder", {
+            method: "POST",
+            body: randomString,
+            headers: {
+              "content-type": "text/plain",
+            },
+          });
+          let output = await res.json();
+          if (output.data === randomString) {
+            right("o2");
+          } else {
+            wrong("o2");
+            console.log("Response text did not match, for second objective.");
+          }
+        } catch (err) {
+          console.log(err);
+          wrong("o2");
+        }
+
+        try {
+          let bodyToSend = new FormData();
+          bodyToSend.append("data", randomString);
+          let res = await fetch(address + "/bodybuilder", {
+            method: "POST",
+            body: bodyToSend,
+          });
+          let output = await res.json();
+          if (output.data === randomString) {
+            right("o3");
+          } else {
+            wrong("o3");
+            console.log("Response text did not match, for third objective.");
+          }
+        } catch (err) {
+          console.log(err);
+          wrong("o3");
+        }
+
+        document.querySelector("#tasklist").innerHTML =
+          "Objectives Checklist: Finished running";
+      }
+
+      function resetColors() {
+        let arr = ["o1", "o2", "o3"];
+        for (let elem of arr) {
+          document.querySelector("#" + elem).classList.remove("green");
+          document.querySelector("#" + elem).classList.remove("red");
+          document.querySelector("#" + elem).classList.add("gray");
+        }
+      }
+
+      function right(id) {
+        document.querySelector("#" + id).classList.remove("gray");
+        document.querySelector("#" + id).classList.add("green");
+      }
+
+      function wrong(id) {
+        document.querySelector("#" + id).classList.remove("gray");
+        document.querySelector("#" + id).classList.add("red");
+      }
+    </script>
+  </body>
+</html>

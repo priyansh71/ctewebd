@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Question 1</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../styles.css" />
+    <style type="text/css">
+      .code {
+        font-family: monospace;
+      }
+      .gray {
+        color: gray;
+      }
+      .green {
+        color: green;
+      }
+      .red {
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="bg-gray-50 p-1 shadow-lg pl-2">
+      <div
+        class="text-gray-800 text-3xl font-bold py-5 px-6"
+        style="font-family: 'Montserrat'"
+      >
+        CORS: The first necessary thing
+      </div>
+    </div>
+    <div class="bg-gray-800 text-gray-50 py-5 px-8">
+      <div
+        class="list-disc mx-5 text-lg my-4 space-y-2 tracking-wide"
+        style="font-family: 'Noto Sans KR'"
+      >
+        <li>
+          CORS refers to Cross Origin Resource Sharing. It is a set of rules
+          followed by browsers.
+        </li>
+        <li>
+          When a server S1 serves a webpage, the origin of that webpage is S1.
+          When certain code on this webpage makes a request to some resource on
+          S1, the request is a 'same-origin request'.
+        </li>
+        <li>
+          If that webpage makes a request to a different server S2, the request
+          is 'cross-origin request'.
+        </li>
+        <li>
+          CORS is a security feature built into browsers to not allow access to
+          resources on the internet from random locations.
+        </li>
+        <li>
+          As a measure of security, whenever a webpage makes a cross-origin
+          request, the browser first sends a 'Pre-Flight request' asking the
+          server if it is okay to make such a cross-origin request.
+        </li>
+        <li>
+          The server should then respond (to the pre-flight request) with the
+          alloweds origins (for a potential request) and the allowed methods
+          (for a potential request).
+        </li>
+        <li>
+          This is done by
+          <a
+            href="https://expressjs.com/en/5x/api.html#res.set"
+            class="text-gray-300 underline tracking-wider font-mono"
+            >setting</a
+          >
+          the appropriate headers in the response. You will have to search up
+          which headers to set, to make successful cross-origin requests.
+        </li>
+        <li>
+          If the browser receives a satisfactory response for the pre-flight
+          request, only then it allows the webpage to go ahead with making the
+          request.
+        </li>
+      </div>
+    </div>
+    <h2 class="text-gray-800 bg-gray-100 text-xl px-7 font-mono pt-3">
+      Question:
+    </h2>
+    <div
+      class="
+        pt-4
+        text-md
+        bg-gray-100
+        font-semibold
+        text-lg
+        space-y-2.5
+        py-3
+        px-8
+        text-gray-800
+      "
+      style="font-family: 'Noto Sans Kr'"
+    >
+      <h4>
+        Write code for a server which returns the string
+        <span class="code">'CORS Setup Done'</span>, on a
+        <span class="code">GET</span> request on the path
+        <span class="code">'/corscheck'</span>.
+      </h4>
+      <h4>
+        You will be able to attempt rest of the problems only if you are able to
+        solve this one, since all requests made to evaluate your code will be
+        cross-origin.
+      </h4>
+      <h4>Check the browser console for errors if any.</h4>
+      <div>
+        <form class="mb-4">
+          <span class="mr-2">Server address : </span>
+          <input
+            type="text"
+            id="address"
+            class="
+              rounded-sm
+              border-2 border-gray-800
+              mr-4
+			  mb-3
+              font-normal
+              text-lg
+			  px-2
+              py-0.75
+              focus:border-gray-800
+            "
+          />
+		  <br>
+          <span
+            class="
+              bg-gray-800
+              cursor-pointer
+              text-gray-50
+              px-3
+              py-1.5
+              text-md
+              rounded-md
+            "
+            onclick="check()"
+            >Submit</span
+          >
+        </form>
+      </div>
+      <h2 class="my-3" id="tasklist">Objectives Checklist:</h2>
+      <div class="list-disc">
+        <li class="gray" id="o1">
+          GET Request on /corscheck returns string 'CORS Setup Done'.
+        </li>
+      </div>
+	  <div class="relative">
+		<a href="../index.html">
+	<span class="bg-gray-800 text-gray-50 px-3.5 py-2 rounded-md absolute right-1 bottom-2">Homepage</span>
+	</a>
+	</div>
+    </div>
+    <script type="text/javascript">
+      async function check() {
+        document.querySelector("#tasklist").innerHTML =
+          "Objectives Checklist: Running";
+        document.querySelector("#o1").classList.remove("red");
+        document.querySelector("#o1").classList.remove("green");
+        document.querySelector("#o1").classList.add("gray");
+        const address = document.querySelector("#address").value;
+        try {
+          let res = await fetch(address + "/corscheck");
+          let output = await res.text();
+          document.querySelector("#o1").classList.remove("gray");
+          if (output === "CORS Setup Done") {
+            document.querySelector("#o1").classList.add("green");
+          } else {
+            document.querySelector("#o1").classList.add("red");
+            console.log("Text from response does not match the requirement.");
+          }
+        } catch (err) {
+          console.log(err);
+          document.querySelector("#o1").classList.remove("gray");
+          document.querySelector("#o1").classList.add("red");
+        }
+        document.querySelector("#tasklist").innerHTML =
+          "Objectives Checklist: Finished running";
+      }
+    </script>
+  </body>
+</html>
