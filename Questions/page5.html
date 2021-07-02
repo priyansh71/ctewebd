@@ -1,8 +1,17 @@
 <!DOCTYPE html>
-<html>
 <head>
 	<meta charset="utf-8">
 	<title>Question 5</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../styles.css" />
 	<style type="text/css">
 		.code {
 			font-family: monospace;
@@ -24,48 +33,104 @@
 		}
 	</style>
 </head>
-<body style='font-family: Garamond;'>
-	<h1>Rate Limiting</h1>
-	<ul>
-		<li>Rate Limiting refers to the act of putting a limit on the number of requests that can be made in a certain period of time.</li>
+<body>
+    <div class="bg-gray-100 p-1 shadow-lg pl-2">
+		<div
+		  class="text-gray-800 text-3xl font-extrabold py-5 px-6"
+		  style="font-family: 'Montserrat'"
+		>Rate Limiting</div>
+		</div>
+	  <div class="bg-gray-800 text-gray-50 py-5 px-8">
+		<div
+		  class="list-disc mx-5 text-lg my-4 space-y-3 tracking-wide"
+		  style="font-family: 'Noto Sans KR'"
+		>		<li>Rate Limiting refers to the act of putting a limit on the number of requests that can be made in a certain period of time.</li>
 		<li>A simple example is that a server may restrict any user to 25 requests per minute.</li>
 		<li>If the user exceed the limit, then the user must wait for some period of time, before making additional requests.</li>
 		<li>The purpose of Rate Limiting is to prevent attackers from slowing down your servers by constantly firing requests onto it. It is important for small-scale servers, since the server may come crashing down if it is flooded with requests. Such an attack is also called DOS(Denial of Service).</li>
 		<li>Rate Limiting can be implemented ip-address wise, that is, each unique ip-address is limited to certain number of requests in a given time duration.</li>
 		<li>It can also be implemented account wise. If you have an account system on your website (for example: Instagram), the server can limit the number of requests from the account.</li>
 		<li>On the dark side of the internet, there are loads of hackers attempting to break into websites, to crash them, to gain access to secure data on the server, and many more malevolent things beyond your imagination. Therefore, it is important to secure the server against hackers.</li>
-	</ul>
+	  </div>
+	  </div>
 
-	<h2>Question:</h2>
+	  <h2 class="text-gray-800 bg-gray-100 text-xl px-7 font-mono pt-3">
+		Question:
+	  </h2>
+	  <div
+		class="
+		  pt-4
+		  text-md
+		  bg-gray-100
+		  font-semibold
+		  text-lg
+		  space-y-2.5
+		  py-3
+		  px-8
+		  text-gray-800
+		"
+		style="font-family: 'Noto Sans Kr'"
+	  >
 	<h4>Write code for a server which rate limits every ip-address to 3 requests per 10 seconds.</h4>
 	<h4>This page will attempt to make 5 requests on your server, in a span of 10 seconds.</h4>
 	<h4>The requests will be made on any of the following paths at random:</h4>
-	<ul class="code">
+	<div class="code list-disc">
 		<li>GET /high_score_in_chrome_dino</li>
 		<li>DELETE /all_the_files</li>
 		<li>POST /the_meme_on_reddit</li>
 		<li>PUT /grapes_in_microwave</li>
-	</ul>
+	</div>
 	<h4>For all the requests, the response should have a status of 200 (the response can be empty response, only the status code matters for this question).</h4>
 	<h4>However, if the rate limit is crossed, then the response (for any request) should be with a status code of 429. 429 refers to rate limiting.</h4>
 	<h4>By the way, don't put a limit on the OPTIONS request (the one that makes CORS work), otherwise you will not be able to solve this question.</h4>
 	<h4>Note: it is recommended to use a third party package from NPM for this question. Writing a whole rate limiting package by yourself would take a lot of time.</h4>
 
+	<div class="mb-4">
 	<form>
-		Server address 
-		<input type="text" name="" id="address">
+		Server address :  
+		<input type="text" name="" id="address" class="
+		rounded-sm
+		border-2 border-gray-800
+		mr-4
+		mb-3
+		font-normal
+		text-lg
+		px-1.5
+		py-0.75
+		focus:border-gray-800
+	  " >
+	  <br>
+	  <span
+	  class="
+		bg-gray-800
+		cursor-pointer
+		text-gray-50
+		px-3
+		py-1.5
+		text-md 
+		rounded-md
+	  "
+	  onclick="check()"
+	  >Submit</span
+	>
+
 	</form>
-	<div>
-		<span class='button' onclick='check()'>Submit</span>
-	</div>
+</div>
 	<h2 id="tasklist">Objectives Checklist:</h2>
-	<ul>
+	<div class="mb-4 list-disc">
 		<li id='o1' class='gray'>First request (normal)</li>
 		<li id='o2' class='gray'>Second request (normal)</li>
 		<li id='o3' class='gray'>Third request (normal)</li>
 		<li id='o4' class='gray'>Fourth request (rate limited)</li>
 		<li id='o5' class='gray'>Fifth request (rate limited)</li>
-	</ul>
+	</div>
+
+	<div class="relative">
+		<a href="../index.html">
+	<span class="bg-gray-800 text-gray-50 px-3.5 py-2 rounded-md absolute right-0 bottom-2">Home</span>
+	</a>
+	</div>
+</div>
 
 	<script type="text/javascript">
 

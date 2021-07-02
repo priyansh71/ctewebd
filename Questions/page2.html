@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Question 2</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR"
+      rel="stylesheet"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../styles.css" />
+    <style type="text/css">
+      .code {
+        font-family: monospace;
+      }
+      .button {
+        background-color: black;
+        color: white;
+        padding: 3px;
+        cursor: pointer;
+      }
+      .gray {
+        color: gray;
+      }
+      .green {
+        color: #26b326;
+      }
+      .red {
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="bg-gray-50 p-1 shadow-xl">
+      <h1
+        class="text-gray-800 text-3xl font-bold py-5 px-6"
+        style="font-family: 'Montserrat'"
+      >
+        HTTP Methods
+      </h1>
+    </div>
+	<div class="bg-gray-800 text-gray-50 py-5 px-8">
+    <div class="list-disc mx-5 text-lg my-4 space-y-2 tracking-wide"
+	style="font-family: 'Noto Sans KR'">
+      <li>
+        These words usually indicate the type of action you want to perform on a
+        resource on the internet.
+      </li>
+      <li>
+        They do have certain specific meanings, and you are encouraged to read
+        up more about them
+        <a
+          href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods"
+		  class="text-gray-300 underline tracking-wider font-mono"
+          target="_blank"
+          >here</a
+        >.
+      </li>
+    </div>
+	</div>
+
+	<h2 class="text-gray-800 bg-gray-100 text-xl px-7 font-mono pt-3">
+		Question:
+	  </h2>
+	  <div
+      class="pt-4 text-md bg-gray-100 font-semibold text-lg space-y-2.5 py-3 px-8 text-gray-800"
+      style="font-family: 'Noto Sans Kr'"
+    >    
+	  <h4>
+      Write code for a backend server, which can receive a request on the path
+      <span class="code">'/mirror'</span>.
+    </h4>
+    <h4>The server should return a string as a response.</h4>
+    <h4>The string should be reverse of the HTTP Method of the request.</h4>
+    <h4>
+      For example: if the request was a
+      <span class="code">GET /mirror</span> then the server should return the
+      string <span class="code">'TEG'</span>.
+    </h4>
+    <h4>
+      Similarly, return a <span class="code">TSOP</span> for a POST request.
+      There are many other methods, which I haven't written in this description.
+    </h4>
+    <h4>Check the browser console for errors if any.</h4>
+    <h4>
+      Make sure the code which handles CORS (from the previous problem) is
+      implemented in your code for this problem too, otherwise you'll get a CORS
+      error.
+    </h4>
+<div class="mb-4">
+    <form>
+      Server address :
+      <input type="text" name="" id="address" class=" rounded-sm mb-3 border-2 border-gray-800 mr-4 font-normal text-lg px-2 py-0.75 focus:border-gray-800"  />
+	  <br>
+      <span class="bg-gray-800 cursor-pointer text-gray-50 px-3
+    py-1.5 text-md rounded-md" onclick="check()">Submit</span>
+	</form>
+</div>
+
+    <h2 id="tasklist">Objectives Checklist :</h2>
+    <div id="list" class="list-disc"></div>
+    <div class="relative">
+      <a href="../index.html">
+    <span class="bg-gray-800 text-gray-50 px-3.5 py-2 rounded-md absolute right-0 bottom-2">Home</span>
+    </a>
+    </div>
+	  </div>
+
+    <script type="text/javascript">
+      function shuffleArray(array) {
+        for (var i = array.length - 1; i > 0; i--) {
+          var j = Math.floor(Math.random() * (i + 1));
+          var temp = array[i];
+          array[i] = array[j];
+          array[j] = temp;
+        }
+      }
+
+      let methods = ["GET", "POST", "PUT", "DELETE", "PATCH"];
+      shuffleArray(methods);
+
+      window.onload = function () {
+        for (let x = 0; x < methods.length; x++) {
+          let li = document.createElement("li");
+          li.id = "o" + x;
+          li.classList.add("gray");
+          let text = document.createTextNode(methods[x] + " /mirror");
+          li.appendChild(text);
+          document.getElementById("list").appendChild(li);
+        }
+      };
+
+      function resetColors() {
+        for (let x = 0; x < methods.length; x++) {
+          document.querySelector("#o" + x).classList.remove("red");
+          document.querySelector("#o" + x).classList.remove("green");
+          document.querySelector("#o" + x).classList.add("gray");
+        }
+      }
+
+      async function check() {
+        resetColors();
+        document.querySelector("#tasklist").innerHTML =
+          "Objectives Checklist: Running";
+        const address = document.querySelector("#address").value;
+        for (let x = 0; x < methods.length; x++) {
+          try {
+            let res = await fetch(address + "/mirror", {
+              method: methods[x],
+            });
+            let output = await res.text();
+            output = output.split("").reverse().join("");
+            document.querySelector("#o" + x).classList.remove("gray");
+            if (output === methods[x]) {
+              document.querySelector("#o" + x).classList.add("green");
+            } else {
+              console.log("Text from response does not match requirements");
+              document.querySelector("#o" + x).classList.add("red");
+            }
+          } catch (err) {
+            console.log(err);
+            document.querySelector("#o" + x).classList.remove("gray");
+            document.querySelector("#o" + x).classList.add("red");
+          }
+        }
+        document.querySelector("#tasklist").innerHTML =
+          "Objectives Checklist: Finished running";
+      }
+    </script>
+  </body>
+</html>
