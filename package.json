@@ -1,0 +1,23 @@
+{
+  "name": "ctewebd",
+  "version": "1.0.0",
+  "description": "[https://vedantbang.github.io/ctewebd](https://vedantbang.github.io/ctewebd)",
+  "main": "index.js",
+  "scripts": {
+    "build-css": "tailwindcss build src/styles.css -o public/styles.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/priyansh71/ctewebd.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/priyansh71/ctewebd/issues"
+  },
+  "homepage": "https://github.com/priyansh71/ctewebd#readme",
+  "dependencies": {
+    "tailwindcss": "^2.2.4"
+  }
+}
