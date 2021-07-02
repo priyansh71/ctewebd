@@ -3,12 +3,22 @@
 <head>
 	<meta charset="utf-8">
 	<title>CTE - WebD</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR" rel="stylesheet" rel="stylesheet">
+	<link rel="stylesheet" href="/styles.css">
 </head>
-<body style="font-family: Garamond;">
-	<h1>Welcome to CTE WebD - Backend Practice</h1>
-	<h2>This set of pages contains various questions to practice your backend skills. The questions are based on ExpressJS.</h2>
-	<h2>Important Points:</h2>
-	<ul>
+<body>
+	<div class="bg-gray-50 py-2 shadow-xl">
+	<div class="text-gray-800 font-extrabold text-4xl py-5 px-6" style="font-family: 'Montserrat' ;">Welcome to CtE WebD - Backend Practice</div>
+</div>
+<div class="bg-gray-800 text-gray-50 py-5">
+<div class="mx-auto text-xl font-normal px-6 tracking-wide " style="font-family: 'Noto Sans KR' ;">
+	<h2 class="mb-3 mx-3">Following set of pages contain various questions to practice your backend skills. 
+		The questions are based on ExpressJS.</h2>
+	<h2 class="text-xl px-3 font-semibold">Important Points:</h2>
+</div>
+	<div class="list-disc mx-8 text-lg my-4 space-y-2 tracking-wide" style="font-family: 'Noto Sans KR' ;">
 		<li>Each page listed below contains a question to solve.</li>
 		<li>You need to code a backend server to fulfill the requirements given in question, and host it on your own machine (localhost).</li>
 		<li>Each question has a textfield input, where you need to input the hosted address of your server (for example: http://localhost:8000).</li>
@@ -17,14 +27,16 @@
 		<li>The page will make requests to your server to evaluate it, and then display the results on your screen.</li>
 		<li>At the end of the question is a checklist of the objectives. When you submit your address, the objectives in the checklist will change their color.</li>
 		<li>On sucessful completion, an objective turns green, and on an error, the objective turns red.</li>
-	</ul>
-	<h2>Questions:</h2>
-	<ol>
-		<li><a href="/ctewebd/page1.html" target="_blank">CORS: The first necessary thing</a></li>
-		<li><a href="/ctewebd/page2.html" target="_blank">HTTP Methods</a></li>
-		<li><a href="/ctewebd/page3.html" target="_blank">HTTP Headers and Cookies</a></li>
-		<li><a href="/ctewebd/page4.html" target="_blank">Request and Response Bodies</li>
-		<li><a href="/ctewebd/page5.html" target="_blank">Rate Limiting</a></li>
+	</div>
+</div>
+<h2 class="text-gray-800 bg-gray-100 text-xl mx-7 font-mono pt-3">Questions:</h2>
+
+	<div class="list-decimal pt-4 text-md bg-gray-100 space-y-2 py-3 px-8 text-gray-800 font-mono underline">
+		<li><a href="/Questions/page1.html" target="_blank">CORS: The first necessary thing</a></li>
+		<li><a href="/Questions/page2.html" target="_blank">HTTP Methods</a></li>
+		<li><a href="/Questions/page3.html" target="_blank">HTTP Headers and Cookies</a></li>
+		<li><a href="/Questions/page4.html" target="_blank">Request and Response Bodies</li>
+		<li><a href="/Questions/page5.html" target="_blank">Rate Limiting</a></li>
 	</ol>
 </body>
 </html>
